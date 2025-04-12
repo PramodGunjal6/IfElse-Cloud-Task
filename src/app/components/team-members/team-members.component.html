@@ -1,0 +1,47 @@
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+<div class="grid" *ngIf="!loading">
+  <div class="header row">
+    <input type="checkbox" (change)="toggleSelectAll($event)">
+    <div class="cell" *ngFor="let column of columns" [style.text-align]="column.align">
+      {{ column.column_name }}
+    </div>
+    <div class="cell">Actions</div>
+  </div>
+  <ng-container *ngIf="getPaginatedMembers().length > 0; else noData">
+    <div class="row" *ngFor="let member of getPaginatedMembers(); let i = index" [class.selected]="selectedRows.has(i)">
+      <input type="checkbox" [checked]="selectedRows.has(i)" (change)="toggleRowSelection(i)">
+      <div class="cell avatar-cell">
+        <img [src]="'https://i.pravatar.cc/40?img=' + ((currentPage - 1) * itemsPerPage + i + 1)" alt="Avatar" class="avatar">
+        <span>{{ getColumnValue(member, columns[0]) }}</span>
+      </div>
+      <div class="cell">{{ getColumnValue(member, columns[1]) }}</div>
+      <div class="cell">{{ getColumnValue(member, columns[2]) }}</div>
+      <div class="cell">
+        <div class="progress-bar" [style.width.%]="member.license_used"></div>
+      </div>
+      <div class="cell">
+        <span *ngFor="let team of member.teams" class="team-tag" [style.background-color]="team.background_color" [style.color]="team.text_color">
+          {{ team.value }}
+        </span>
+      </div>
+      <div class="cell action-icons">
+        <button (click)="editMember((currentPage - 1) * itemsPerPage + i)" title="Edit">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button (click)="deleteMember((currentPage - 1) * itemsPerPage + i)" title="Delete">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noData>
+    <div class="row">No team members available.</div>
+  </ng-template>
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">← Previous</button>
+    <span *ngFor="let page of getPageNumbers()" (click)="currentPage = page" [class.active]="currentPage === page">
+      {{ page }}
+    </span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next →</button>
+  </div>
+</div>

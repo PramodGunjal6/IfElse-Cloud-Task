@@ -1,0 +1,103 @@
+$primary-color: #6B46C1;
+.grid {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  .header {
+    background: $primary-color;
+    color: white;
+    font-weight: bold;
+  }
+  .row {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    &:hover { background: #f9f9f9; }
+    &.selected { background: #e6e6fa; }
+    height: 60px;
+    justify-content: center;
+  }
+  .cell {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:first-child { flex: 0.5; }
+    &.avatar-cell {
+      display: flex;
+      align-items: center;
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
+    .team-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      margin-right: 4px;
+      border-radius: 4px;
+      color: #fff;
+      &:last-child { margin-right: 0; }
+    }
+    button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border: 1px solid $primary-color;
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+      &:hover { background: #e6e6fa; }
+    }
+  }
+  .progress-bar {
+    height: 10px;
+    background: $primary-color;
+    border-radius: 5px;
+  }
+  .pagination {
+    text-align: center;
+    padding: 10px;
+    color: #666;
+    button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border: 1px solid $primary-color;
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+      &:hover:not(:disabled) { background: #e6e6fa; }
+      &:disabled { cursor: not-allowed; opacity: 0.6; }
+    }
+    span {
+      margin: 0 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      &.active { font-weight: bold; color: $primary-color; }
+    }
+  }
+  .action-icons {
+    display: flex;
+    gap: 10px;
+  
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      color: #6B46C1; 
+      font-size: 16px; 
+  
+      &:hover {
+        color: darken(#6B46C1, 10%); 
+      }
+  
+      &:focus {
+        outline: none; 
+        box-shadow: 0 0 0 2px rgba(107, 70, 193, 0.3); 
+      }
+    }
+  }
+}

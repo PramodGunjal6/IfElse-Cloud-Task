@@ -1,0 +1,17 @@
+$primary-color: #6B46C1;
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  background: $primary-color;
+  width: 250px;
+  .icon {
+    width: 40px;
+    height: 40px;
+    background: white;
+    margin: 10px 0;
+    border-radius: 50%;
+  }
+}

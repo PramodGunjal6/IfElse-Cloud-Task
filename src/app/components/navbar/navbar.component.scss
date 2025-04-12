@@ -1,0 +1,25 @@
+$primary-color: #6B46C1;
+.navbar {
+  height: 60px;
+  background: $primary-color;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  .nav-buttons {
+    button {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 5px 15px;
+      margin-left: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover { background: rgba(255, 255, 255, 0.1); }
+    }
+  }
+}

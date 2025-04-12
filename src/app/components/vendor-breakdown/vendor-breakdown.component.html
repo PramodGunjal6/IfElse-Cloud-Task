@@ -1,0 +1,23 @@
+<div class="vendor-breakdown">
+    <div class="section-header">
+      <div class="icon-box"><i class="fas fa-cube"></i></div>
+      <h2>Vendor breakdown</h2>
+      <p>Keep track of vendors and their security ratings.</p>
+    </div>
+    <div class="chart-container">
+      <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis" [colors]="chartOptions.colors" [plotOptions]="chartOptions.plotOptions"></apx-chart>
+    </div>
+    <div class="stats">
+      <div class="stat-item">
+        <span>Vendors monitored:</span>
+        <span class="stat-value">240</span>
+      </div>
+      <div class="progress-circle">80%</div>
+      <p>You’re using 80% of available spots.</p>
+      <p class="warning">You’ve almost reached your limit</p>
+      <div class="button-group">
+        <button class="secondary-button">View full report</button>
+        <button class="upgrade-button">Upgrade plan</button>
+      </div>
+    </div>
+  </div>

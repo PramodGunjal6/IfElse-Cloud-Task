@@ -1,6 +1,18 @@
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { DashboardComponent } from './app/components/dashboard/dashboard.component';
+import { provideHttpClient } from '@angular/common/http';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+const routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' as const },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '**', redirectTo: '/dashboard' }
+];
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes, withComponentInputBinding()),
+    provideHttpClient()
+  ]
+}).catch(err => console.error(err));
